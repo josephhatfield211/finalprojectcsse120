@@ -5,7 +5,8 @@
 
 import rosebotics_new as rb
 import time
-
+import tkinter
+from tkinter import ttk
 
 def main():
     #colorsensortest()
@@ -39,4 +40,22 @@ def arm_and_claw_test():
     robot.arm.calibrate()
     robot.arm.move_arm_to_position(69000000)
 
+def project(n):
+    robot = rb.Snatch3rRobot()
+    root = tkinter.Tk()
+    root.title("Project Game")
+    root.bind('<a>', lambda event: turn_left(robot))
+    screen = tkinter.Canvas(root, height=300, width=400)
+    screen.grid()
+    for k in range(n):
+        coin = screen.create_oval(100 + 10 * k, 100 + 10 * k, 100 + 10 + 10 * k, 100 + 10 + 10 * k, fill='yellow')
+    root.mainloop()
+
+def turn_left(self):
+    while True:
+        self.drive_system.left_wheel.start_spinning(-100)
+        self.drive_system.right_wheel.start_spinning(100)
+        if keyboard.is_pressed('a') == False:
+            self.drive_system.left_wheel.stop_spinning()
+            self.drive_system.right_wheel.stop_spinning()
 main()
