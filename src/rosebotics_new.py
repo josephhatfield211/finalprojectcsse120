@@ -175,8 +175,8 @@ class DriveSystem(object):
         """
         STOPS the robot, using the given StopAction (which defaults to BRAKE).
         """
-        self.left_wheel.stop_spinning(stop_action)
-        self.right_wheel.stop_spinning(stop_action)
+        self.left_wheel.stop_spinning()
+        self.right_wheel.stop_spinning()
 
     def move_for_seconds(self,
                          seconds,
@@ -216,7 +216,7 @@ class DriveSystem(object):
 
         while True:
             if math.fabs(self.right_wheel.get_degrees_spun()) >= 85 * inches:
-                self.stop_moving(stop_action)
+                self.stop_moving()
                 self.right_wheel.reset_degrees_spun()
                 break
 
@@ -237,7 +237,7 @@ class DriveSystem(object):
 
         while True:
             if math.fabs(self.right_wheel.get_degrees_spun()) >= 396 * degrees / 90:
-                self.stop_moving(stop_action)
+                self.stop_moving()
                 self.right_wheel.reset_degrees_spun()
                 break
 
@@ -258,7 +258,7 @@ class DriveSystem(object):
 
         while True:
             if math.fabs(self.left_wheel.get_degrees_spun()) >= 940 * degrees / 90:
-                self.stop_moving(stop_action)
+                self.stop_moving()
                 self.left_wheel.reset_degrees_spun()
                 break
 
