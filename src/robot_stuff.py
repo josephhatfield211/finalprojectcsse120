@@ -31,7 +31,7 @@ class Remote(object):
         self.robot.drive_system.go_straight_inches(1, self.speed)
 
     def turn_left(self):
-        self.robot.drive_system.spin_in_place_degrees(-90)
+        self.robot.drive_system.spin_in_place_degrees(90, -100)
 
     def go_backward(self):
         self.robot.drive_system.go_straight_inches(1, -self.speed)
@@ -48,5 +48,6 @@ class Remote(object):
                 self.speed = self.speed - 10 * self.hits
 
         if self.hits == 4:
+                ev3.Sound.set_volume(200)
                 ev3.Sound.play('/home/robot/csse120/assets/sounds/kirbylose.wav').wait()
 main()

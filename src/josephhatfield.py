@@ -28,7 +28,7 @@ def main():
     #colorsensortest()
     #polygontest(5)
     #arm_and_claw_test()
-    project(6)
+    project()
 
 ########################
 # def colorsensortest():
@@ -58,9 +58,10 @@ def main():
 #     robot.arm.calibrate()
 #     robot.arm.move_arm_to_position(69000000)
 ########################
-def project(n):
+def project():
     root = tkinter.Tk()
     root.title("Project Game")
+    n=2
     client = com.MqttClient()
     client.connect_to_ev3()
     screen = tkinter.Canvas(root, height=300, width=400)
@@ -68,17 +69,12 @@ def project(n):
     state = State(screen,n)
     char = screen.create_oval(0,0,15,15, fill='red')
     coin1 = Coin(screen)
-    coin2 = Coin(screen)
-    coin3 = Coin(screen)
-    coin4 = Coin(screen)
-    coin5 = Coin(screen)
-    #listnew = [coin1,coin2,coin3,coin4,coin5]
-    listnew = [coin1, coin2, coin3, coin4, coin5]
-    # for k in range(n):
-    #     coinx = random.randint(5, 391)
-    #     coiny = random.randint(5, 291)
-    #     coin = screen.create_oval(coinx, coiny, coinx + 10, coiny + 10, fill='yellow')
-    #     listnew += [coin]
+    # coin2 = Coin(screen)
+    # coin3 = Coin(screen)
+    # coin4 = Coin(screen)
+    # coin5 = Coin(screen)
+    # listnew = [coin1, coin2, coin3, coin4, coin5]
+    listnew = [coin1]
     root.bind('<w>', lambda event: go_forward(client,screen,char,state,n,listnew,state.text))
     root.bind('<a>', lambda event: turn_left(client,state))
     root.bind('<s>', lambda event: go_backward(client,screen,char,state,n,listnew,state.text))
